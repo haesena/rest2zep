@@ -70,4 +70,11 @@ app.post('/users/:user/end', async (req, res) => {
         .catch((err) => res.status(500).json({error: err}));
 });
 
+exports.timeSlotAdded = functions.database.ref('/users/{user}/timeSlots/{tid}').onCreate((snapshot, context) => {
+    const user = context.params.user;
+    const tid = context.params.tid;
 
+    console.log('new timeslot added to user ' + user + ' (' + tid + ')', snapshot.val());
+
+    snapshot.ref.child('exported').set(true);
+});
