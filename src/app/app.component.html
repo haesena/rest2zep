@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <span>ZepApp</span>
+  <span class="toolbar-spacer"></span>
+  <button mat-icon-button aria-label="Settings" *ngIf="auth.uid" routerLink="/settings">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="main-content">
+<router-outlet></router-outlet>
+</div>

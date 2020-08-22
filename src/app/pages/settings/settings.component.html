@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        Logged in as: {{ (auth.$authUser | async)?.email }}
+        <span class="spacer"></span>
+        <button mat-raised-button color="warn" (click)="auth.logOut()">Log out</button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <b>General Configuration</b>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-form-field class="input-full-width">
+          <mat-label>Default Text</mat-label>
+          <input matInput aria-label="Standard Text" [value]="user.stdText" (change)="auth.updateStdText($event)">
+          <mat-icon matSuffix
+                    matTooltip="Default text for new time slots"
+                    [matTooltipPosition]="'left'">
+            help
+          </mat-icon>
+        </mat-form-field>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <b>REST Api</b>
+        <span class="spacer"></span>
+        <mat-slide-toggle [color]="'primary'" [checked]="user.token" (change)="auth.updateApiToken($event)"></mat-slide-toggle>
+      </mat-list-item>
+      <div *ngIf="user.token">
+        <mat-list-item>
+          <h3 matLine>URL:</h3>
+          <code matLine>https://us-central1-rest2zep.cloudfunctions.net/rest2zep</code>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matLine>Services:</h3>
+          <code matLine>/api/v1/{{auth.uid}}/start</code>
+          <code matLine>/api/v1/{{auth.uid}}/end</code>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matLine>Authentication (BasicAuth):</h3>
+          <span matLine>Username: <code>{{auth.uid}}</code></span>
+          <span matLine>Password: <code>{{user.token}}</code></span>
+        </mat-list-item>
+      </div>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions class="align-right">
+    <button mat-raised-button color="primary" routerLink="/main">Back</button>
+  </mat-card-actions>
+</mat-card>

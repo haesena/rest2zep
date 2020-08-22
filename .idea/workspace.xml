@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4bce17c0-d78a-43a0-93e3-2237a25d29fb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.firebaserc" beforeDir="false" afterPath="$PROJECT_DIR$/.firebaserc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/functions/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +32,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\data\angular\rest2zep\functions\node_modules\typescript\lib" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -40,14 +46,35 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597953898404</updated>
-      <workItem from="1597953901839" duration="5248000" />
+      <workItem from="1597953901839" duration="5557000" />
+      <workItem from="1598041367601" duration="10215000" />
     </task>
+    <task id="LOCAL-00001" summary="Added function to process newly added timeSlots">
+      <created>1597959932089</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1597959932089</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added function to process newly added timeSlots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added function to process newly added timeSlots" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="1342" y="560" key="#com.intellij.ide.util.MemberChooser" timestamp="1598056506137">
+      <screen x="0" y="0" width="3072" height="1688" />
+    </state>
+    <state x="1342" y="560" key="#com.intellij.ide.util.MemberChooser/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598056506137" />
+    <state x="1161" y="413" key="CommitChangelistDialog2" timestamp="1597959930534">
+      <screen x="0" y="0" width="3072" height="1688" />
+    </state>
+    <state x="1161" y="413" key="CommitChangelistDialog2/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1597959930534" />
     <state x="1415" y="742" width="720" height="204" key="Github.ShareDialog" timestamp="1597956319275">
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
@@ -56,5 +83,25 @@
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
     <state x="1395" y="549" width="710" height="589" key="Github.UntrackedFilesDialog/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1597956333964" />
+    <state x="1381" y="546" key="RollbackChangesDialog" timestamp="1598041798600">
+      <screen x="0" y="0" width="3072" height="1688" />
+    </state>
+    <state x="1381" y="546" key="RollbackChangesDialog/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598041798600" />
+    <state x="1129" y="577" key="Vcs.Push.Dialog.v2" timestamp="1597959934439">
+      <screen x="0" y="0" width="3072" height="1688" />
+    </state>
+    <state x="1129" y="577" key="Vcs.Push.Dialog.v2/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1597959934439" />
+    <state x="1177" y="493" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598045268374">
+      <screen x="0" y="0" width="3072" height="1688" />
+    </state>
+    <state x="1177" y="493" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598045268374" />
+    <state x="1245" y="562" width="581" height="564" key="find.popup" timestamp="1598044700102">
+      <screen x="0" y="0" width="3072" height="1688" />
+    </state>
+    <state x="1245" y="562" width="581" height="564" key="find.popup/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598044700102" />
+    <state x="1193" y="498" width="672" height="676" key="search.everywhere.popup" timestamp="1598054574935">
+      <screen x="0" y="0" width="3072" height="1688" />
+    </state>
+    <state x="1193" y="498" width="672" height="676" key="search.everywhere.popup/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598054574935" />
   </component>
 </project>

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "rest2zep"
+  },
+  "targets": {
+    "rest2zep": {
+      "hosting": {
+        "ZepApp": [
+          "rest2zep"
+        ]
+      }
+    }
   }
 }
