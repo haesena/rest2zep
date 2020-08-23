@@ -8,7 +8,7 @@ import {User} from "../../models/user";
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-  public user: User = {name: null, stdText: null, token: false};
+  public user: User = new User();
 
   constructor(public auth: AuthService) {
     this.auth.$dbUser.subscribe(u => this.user = u);

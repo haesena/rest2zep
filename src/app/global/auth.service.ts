@@ -2,20 +2,21 @@ import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/auth";
 import {Router} from "@angular/router";
 import {auth} from "firebase/app";
-import {Observable, ReplaySubject} from "rxjs";
-import {AngularFireDatabase} from "@angular/fire/database";
-import {map, take} from "rxjs/operators";
+import {BehaviorSubject} from "rxjs";
+import {take} from "rxjs/operators";
 import {User} from "../models/user";
 import {MatSlideToggleChange} from "@angular/material/slide-toggle";
-import {AngularFirestore} from "@angular/fire/firestore";
+import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
+import {AngularFireDatabase, AngularFireObject} from "@angular/fire/database";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public $authUser: ReplaySubject<firebase.User> = new ReplaySubject<firebase.User>();
-  public $dbUser: ReplaySubject<User> = new ReplaySubject<User>();
+  private userObj: AngularFireObject<User>;
+  public $authUser: BehaviorSubject<firebase.User> = new BehaviorSubject<firebase.User>(null);
+  public $dbUser: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   public uid;
 
   constructor(public auth: AngularFireAuth, public router: Router, public db: AngularFireDatabase, public readonly afs: AngularFirestore) {
@@ -23,25 +24,33 @@ export class AuthService {
     auth.authState.subscribe(u => {
       if (u) {
         this.uid = u.uid;
+        this.userObj = this.db.object('users/' + this.uid);
         this.initUser(u.displayName);
-        this.db.object('users/' + this.uid).valueChanges().subscribe(u => this.$dbUser.next(u));
+        this.userObj.valueChanges().subscribe(u => this.$dbUser.next(u));
         // this.router.navgitigate(['/main']);
       } else {
         this.uid = null;
         this.$dbUser = null;
+        this.userObj = null;
       }
     })
   }
 
   private initUser(displayName: string) {
-    this.db.object('users/' + this.uid).valueChanges().pipe(take(1))
+    console.log('chacking if user exists in afs');
+    this.userObj.valueChanges().pipe(take(1))
       .subscribe(v => {
-        if(v === null) {
-          this.db.object('users/' + this.uid).set({
+        console.log('user in afs:', v);
+        if(!v) {
+          console.log('user does not exist, creating');
+          this.userObj.set({
             name: displayName,
-            token: false,
-            stdText: "Eintrag aus ZepApp"
+            apiToken: this.afs.createId(),
+            apiEnabled: false,
+            stdText: "Eintrag aus TimeTrackerApp"
           });
+
+          // this.afs.doc('timeSlots/' + this.uid).set({numberOfDocs: 0});
         }
       });
   }
@@ -58,14 +67,20 @@ export class AuthService {
   }
 
   public updateApiToken(event: MatSlideToggleChange) {
-    this.db.object('users/' + this.uid).update({
-      token: event.checked ? this.afs.createId() : false
+    this.userObj.update({
+      apiEnabled: event.checked
     });
   }
 
   updateStdText(event) {
-    this.db.object('users/' + this.uid).update({
+    this.userObj.update({
       stdText: event.target.value
+    });
+  }
+
+  generateNewToken() {
+    this.userObj.update({
+      apiToken: this.afs.createId()
     });
   }
 }

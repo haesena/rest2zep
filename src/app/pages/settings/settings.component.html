@@ -4,7 +4,7 @@
       <mat-list-item>
         Logged in as: {{ (auth.$authUser | async)?.email }}
         <span class="spacer"></span>
-        <button mat-raised-button color="warn" (click)="auth.logOut()">Log out</button>
+        <button mat-stroked-button color="warn" (click)="auth.logOut()">Log out</button>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
@@ -25,22 +25,28 @@
       <mat-list-item>
         <b>REST Api</b>
         <span class="spacer"></span>
-        <mat-slide-toggle [color]="'primary'" [checked]="user.token" (change)="auth.updateApiToken($event)"></mat-slide-toggle>
+        <mat-slide-toggle [color]="'primary'" [checked]="user.apiEnabled" (change)="auth.updateApiToken($event)"></mat-slide-toggle>
       </mat-list-item>
-      <div *ngIf="user.token">
+      <div *ngIf="user.apiEnabled">
         <mat-list-item>
           <h3 matLine>URL:</h3>
           <code matLine>https://us-central1-rest2zep.cloudfunctions.net/rest2zep</code>
         </mat-list-item>
         <mat-list-item>
           <h3 matLine>Services:</h3>
-          <code matLine>/api/v1/{{auth.uid}}/start</code>
-          <code matLine>/api/v1/{{auth.uid}}/end</code>
+          <code matLine>/api/v1/users/{{auth.uid}}/start</code>
+          <code matLine>/api/v1/users/{{auth.uid}}/end</code>
         </mat-list-item>
         <mat-list-item>
           <h3 matLine>Authentication (BasicAuth):</h3>
           <span matLine>Username: <code>{{auth.uid}}</code></span>
-          <span matLine>Password: <code>{{user.token}}</code></span>
+          <span matLine>Password: <code>{{user.apiToken}}</code></span>
+        </mat-list-item>
+        <mat-list-item>
+          <span class="spacer"></span>
+          <button mat-stroked-button color="primary" (click)="auth.generateNewToken()">
+            Generate new Token
+          </button>
         </mat-list-item>
       </div>
     </mat-list>

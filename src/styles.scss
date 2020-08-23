@@ -1,4 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* Theming */
+@import '~@angular/material/theming';
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define a theme.
+$app-primary: mat-palette($mat-green, A700, 500, 800);
+$app-accent:  mat-palette($mat-orange, A200, A100, A400);
+$app-warn:    mat-palette($mat-red);
+
+$app-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+
+// Include all theme styles for the components.
+@include angular-material-theme($app-theme);
+
+/* General Styling */
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  background-color: black;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.input-full-width {
+  width: 100%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
