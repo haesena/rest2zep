@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TimeSlotService} from "../../global/time-slot.service";
 import {TimeSlot} from "../../models/time-slot";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {PageEvent} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-main',
@@ -26,5 +27,10 @@ export class MainComponent implements OnInit {
           duration: 5000,
         });
       });
+  }
+
+  paginate($event: PageEvent) {
+    console.log('pagination', $event);
+    this.time.filterParams$.next({perPage: $event.pageSize, page: $event.pageIndex});
   }
 }

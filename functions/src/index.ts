@@ -96,5 +96,5 @@ exports.timeSlotAdded = functions.database.ref('/timeSlots/{user}/{tid}').onCrea
   const user = context.params.user;
   const tid = context.params.tid;
 
-  snapshot.ref.child('exported').set(true);
+  // snapshot.ref.child('exported').set(true);
 });

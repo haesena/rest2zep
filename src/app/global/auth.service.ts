@@ -27,7 +27,10 @@ export class AuthService {
         this.userObj = this.db.object('users/' + this.uid);
         this.initUser(u.displayName);
         this.userObj.valueChanges().subscribe(u => this.$dbUser.next(u));
-        // this.router.navgitigate(['/main']);
+        if(localStorage.getItem('rest2zep_redirected_to_login') === 'redirected') {
+          localStorage.removeItem('rest2zep_redirected_to_login');
+          this.router.navigate(['/main']);
+        }
       } else {
         this.uid = null;
         this.$dbUser = null;
@@ -56,6 +59,7 @@ export class AuthService {
   }
 
   public logIn() {
+    localStorage.setItem('rest2zep_redirected_to_login', 'redirected');
     this.auth.signInWithRedirect(new auth.GoogleAuthProvider())
       .then(() => console.log('signed in!'))
       .catch((err) => console.error(err));

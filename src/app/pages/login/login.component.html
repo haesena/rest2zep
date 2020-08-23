@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="!waitingAfterRedirect; else redirecting">
   <mat-card-content>
     <p>
       Welcome to the time tracker app.<br>
@@ -9,3 +9,13 @@
     <button mat-button (click)="auth.logIn()">Login with Google</button>
   </mat-card-actions>
 </mat-card>
+
+<ng-template #redirecting>
+  <mat-card>
+    <mat-card-content>
+      <p>
+        Loging in, you will be redirected to the main page shortly...
+      </p>
+    </mat-card-content>
+  </mat-card>
+</ng-template>
