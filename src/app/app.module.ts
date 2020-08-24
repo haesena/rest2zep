@@ -20,13 +20,15 @@ import {MatInputModule} from "@angular/material/input";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { TimeSlotComponent } from './partial/time-slot/time-slot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainComponent,
-    SettingsComponent
+    SettingsComponent,
+    TimeSlotComponent
   ],
   imports: [
     BrowserModule,

@@ -6,4 +6,5 @@ export class User {
   apiToken: string;
   stdText: string;
   currentTimeSlot?: TimeSlot;
+  countTimeSlots: number;
 }

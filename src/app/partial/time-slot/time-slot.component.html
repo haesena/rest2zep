@@ -1,0 +1,9 @@
+<mat-list-item>
+  <span matLine>
+    {{ timeSlot.startTime | date:'dd.MM.yyyy' }}, {{ timeSlot.startTime | date:'HH:mm' }} - {{ timeSlot.endTime | date:'HH:mm' }}
+  </span>
+  <span matLine>
+    {{ timeSlot.text }}
+  </span>
+</mat-list-item>
+<mat-divider></mat-divider>

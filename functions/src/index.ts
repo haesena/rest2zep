@@ -92,6 +92,29 @@ app.post('/users/:user/end', async (req: basicAuth.IBasicAuthedRequest, res) => 
     .catch((err) => res.status(500).json({error: err}));
 });
 
+exports.timeSlotChanged = functions.database.ref('/timeSlots/{uId}/{tid}').onWrite((change, context) => {
+  const uId = context.params.uId;
+
+
+  db.ref('/users/' + uId).once('value')
+    .then(s => {
+
+      const user = s.val();
+
+      let updateCount = 0;
+      if (!change.before.exists()) {
+        // timeSlot created
+        updateCount = 1;
+      } else if (!change.after.exists()) {
+        // timeSlot deleted
+        updateCount = -1;
+      } else {
+        // timeSlot updated
+      }
+      s.ref.update({countTimeSlots: user.countTimeSlots + updateCount});
+    });
+});
+
 exports.timeSlotAdded = functions.database.ref('/timeSlots/{user}/{tid}').onCreate((snapshot, context) => {
   const user = context.params.user;
   const tid = context.params.tid;

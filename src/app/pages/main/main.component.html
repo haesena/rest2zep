@@ -30,13 +30,12 @@
     </ng-template>
     <div>
       <mat-list>
-        <mat-list-item *ngFor="let timeSlot of time.$timeSlotList | async ">
-          {{ timeSlot | json }}
-        </mat-list-item>
+        <app-time-slot *ngFor="let timeSlot of time.$timeSlotList | async" [timeSlot]="timeSlot"></app-time-slot>
       </mat-list>
-      <mat-paginator [pageSize]="5"
-                     [pageSizeOptions]="[2,5,7,10]"
-                     (page)="paginate($event)">
+      <mat-paginator #paginator [pageSize]="5"
+                     [pageSizeOptions]="[5,10,20]"
+                     (page)="paginate($event)"
+                     [length]="time.$countTimeSlots | async">
       </mat-paginator>
     </div>
   </mat-card-content>

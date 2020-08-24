@@ -50,7 +50,8 @@ export class AuthService {
             name: displayName,
             apiToken: this.afs.createId(),
             apiEnabled: false,
-            stdText: "Eintrag aus TimeTrackerApp"
+            stdText: "Eintrag aus TimeTrackerApp",
+            countTimeSlots: 0,
           });
 
           // this.afs.doc('timeSlots/' + this.uid).set({numberOfDocs: 0});

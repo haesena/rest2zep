@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TimeSlotService} from "../../global/time-slot.service";
 import {TimeSlot} from "../../models/time-slot";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {PageEvent} from "@angular/material/paginator";
+import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {AuthService} from "../../global/auth.service";
 
 @Component({
   selector: 'app-main',
@@ -10,9 +11,21 @@ import {PageEvent} from "@angular/material/paginator";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+
+  @ViewChild('paginator') paginator: MatPaginator;
   currentTimeSlot: TimeSlot = new TimeSlot();
-  constructor(public time: TimeSlotService, private _snackBar: MatSnackBar) {
+
+  pageSize = 5;
+
+  constructor(public time: TimeSlotService, public auth: AuthService, private _snackBar: MatSnackBar) {
     this.time.$currentTimeSlot.subscribe(t => this.currentTimeSlot = t);
+    this.time.$countTimeSlots.subscribe(v => {
+      // If the length changed, show the list from begin, because else the pagination keys will be mixed up
+      this.time.filterParams$.next({pageSize: this.pageSize, length: v, pageIndex: 0});
+      if(this.paginator) {
+        this.paginator.firstPage();
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -30,7 +43,13 @@ export class MainComponent implements OnInit {
   }
 
   paginate($event: PageEvent) {
-    console.log('pagination', $event);
-    this.time.filterParams$.next({perPage: $event.pageSize, page: $event.pageIndex});
+    if($event.pageSize !== this.pageSize) {
+      this.paginator.firstPage();
+      this.time.filterParams$.next({...$event, pageSize: $event.pageSize, pageIndex: 0});
+    } else {
+      this.time.filterParams$.next($event);
+    }
+
+    this.pageSize = $event.pageSize;
   }
 }
