@@ -52,6 +52,10 @@ export class AuthService {
             apiEnabled: false,
             stdText: "Eintrag aus TimeTrackerApp",
             countTimeSlots: 0,
+            zepAutoExport: false,
+            zepEnabled: false,
+            zepToken: "",
+            zepUser: ""
           });
 
           // this.afs.doc('timeSlots/' + this.uid).set({numberOfDocs: 0});
@@ -71,21 +75,13 @@ export class AuthService {
       .then(() => this.router.navigate(['/login']));
   }
 
-  public updateApiToken(event: MatSlideToggleChange) {
-    this.userObj.update({
-      apiEnabled: event.checked
-    });
-  }
-
-  updateStdText(event) {
-    this.userObj.update({
-      stdText: event.target.value
-    });
-  }
-
   generateNewToken() {
     this.userObj.update({
       apiToken: this.afs.createId()
     });
+  }
+
+  updateUser(data: Partial<User>) {
+    this.userObj.update(data);
   }
 }

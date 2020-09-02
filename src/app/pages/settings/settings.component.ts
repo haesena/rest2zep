@@ -10,8 +10,12 @@ import {User} from "../../models/user";
 export class SettingsComponent implements OnInit {
   public user: User = new User();
 
+  public zepProjects: any[];
+
   constructor(public auth: AuthService) {
-    this.auth.$dbUser.subscribe(u => this.user = u);
+    this.auth.$dbUser.subscribe(u => {
+      this.user = u ?? this.user;
+    });
   }
 
   ngOnInit(): void {

@@ -7,4 +7,8 @@ export class User {
   stdText: string;
   currentTimeSlot?: TimeSlot;
   countTimeSlots: number;
+  zepEnabled: boolean;
+  zepToken: string;
+  zepUser: string;
+  zepAutoExport: boolean;
 }

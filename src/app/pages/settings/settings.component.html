@@ -10,13 +10,11 @@
       <mat-list-item>
         <b>General Configuration</b>
       </mat-list-item>
-      <mat-list-item>
+      <mat-list-item class="list-item--form-field">
         <mat-form-field class="input-full-width">
           <mat-label>Default Text</mat-label>
-          <input matInput aria-label="Standard Text" [value]="user.stdText" (change)="auth.updateStdText($event)">
-          <mat-icon matSuffix
-                    matTooltip="Default text for new time slots"
-                    [matTooltipPosition]="'left'">
+          <input matInput aria-label="Standard Text" [value]="user.stdText" (change)="auth.updateUser({stdText: $event.target.value})">
+          <mat-icon matSuffix matTooltip="Default text for new time slots" [matTooltipPosition]="'left'">
             help
           </mat-icon>
         </mat-form-field>
@@ -25,7 +23,7 @@
       <mat-list-item>
         <b>REST Api</b>
         <span class="spacer"></span>
-        <mat-slide-toggle [color]="'primary'" [checked]="user.apiEnabled" (change)="auth.updateApiToken($event)"></mat-slide-toggle>
+        <mat-slide-toggle [color]="'primary'" [checked]="user.apiEnabled" (change)="auth.updateUser({apiEnabled: $event.checked})"></mat-slide-toggle>
       </mat-list-item>
       <div *ngIf="user.apiEnabled">
         <mat-list-item>
@@ -47,6 +45,31 @@
           <button mat-stroked-button color="primary" (click)="auth.generateNewToken()">
             Generate new Token
           </button>
+        </mat-list-item>
+      </div>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        <b>ZEP Schnittstelle</b>
+        <span class="spacer"></span>
+        <mat-slide-toggle [color]="'primary'" [checked]="user.zepEnabled" (change)="auth.updateUser({zepEnabled: $event.checked})"></mat-slide-toggle>
+      </mat-list-item>
+      <div *ngIf="user.zepEnabled">
+        <mat-list-item class="list-item--form-field">
+          <mat-form-field class="input-full-width">
+            <mat-label>ZEP Token</mat-label>
+            <input matInput aria-label="ZEP Token" [value]="user.zepToken" (change)="auth.updateUser({zepToken: $event.target.value})">
+          </mat-form-field>
+        </mat-list-item>
+        <mat-list-item class="list-item--form-field">
+          <mat-form-field class="input-full-width">
+            <mat-label>ZEP User</mat-label>
+            <input matInput aria-label="ZEP User" [value]="user.zepUser" (change)="auth.updateUser({zepUser: $event.target.value})">
+          </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+          Export timeslots automatically
+          <span class="spacer"></span>
+          <mat-slide-toggle [color]="'primary'" [checked]="user.zepAutoExport" (change)="auth.updateUser({zepAutoExport: $event.checked})"></mat-slide-toggle>
         </mat-list-item>
       </div>
     </mat-list>

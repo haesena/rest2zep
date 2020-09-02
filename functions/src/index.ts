@@ -6,6 +6,7 @@ import * as bodyParser from "body-parser";
 import * as moment from 'moment-timezone';
 import * as basicAuth from 'express-basic-auth';
 import DataSnapshot = admin.database.DataSnapshot;
+import {readProjekte} from "./zepRequestFunctions";
 
 //initialize firebase inorder to access its services
 admin.initializeApp(functions.config().firebase);
@@ -120,4 +121,34 @@ exports.timeSlotAdded = functions.database.ref('/timeSlots/{user}/{tid}').onCrea
   const tid = context.params.tid;
 
   // snapshot.ref.child('exported').set(true);
+});
+
+exports.userChanged = functions.database.ref('/users/{uId}').onWrite((change, context) => {
+  const uId = context.params.uId;
+
+  if (!change.before.exists()) {
+    // user created
+  } else if (!change.after.exists()) {
+    // user deleted
+  } else {
+    // user updated
+
+    console.log('user changed');
+
+    const after = change.after.val();
+    const before = change.before.val();
+
+    // falls zepToken oder zepUser nicht gesetzt sind
+    if(after.zepToken.length === 0 || after.zepUser.length === 0 || after.zepEnabled === false) {
+      console.log('zepToken or zepUser not set, or zep not enabled, aborting');
+      return;
+    }
+
+    console.log('zepToken changed: ' + (before.zepToken != after.zepToken) + ', zepUser changed: ' + (before.zepUser != after.zepUser) + ', zepProjekteRequestSync' + after.zepProjekteRequestSync)
+
+    if(before.zepToken != after.zepToken || before.zepUser != after.zepUser || after.zepProjekteRequestSync === true) {
+      console.log('calling readProjekte with token ' + after.zepToken + ' and user ' + after.zepUser);
+      readProjekte(after.zepUser, after.zepToken, change.after.ref);
+    }
+  }
 });

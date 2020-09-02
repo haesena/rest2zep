@@ -1,0 +1,15 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:zep="http://zep.provantis.de">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <zep:ReadProjekteRequest>
+      <!--Optional:-->
+      <requestHeader>
+        <authorizationToken>zep_token</authorizationToken>
+      </requestHeader>
+      <readProjekteSearchCriteria>
+        <status>in Arbeit</status>
+        <userId>zep_user</userId>
+      </readProjekteSearchCriteria>
+    </zep:ReadProjekteRequest>
+  </soapenv:Body>
+</soapenv:Envelope>
