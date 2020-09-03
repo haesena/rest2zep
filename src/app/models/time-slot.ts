@@ -3,4 +3,6 @@ export class TimeSlot {
   endTime: string;
   text: string;
   exported: boolean;
+  project: string;
+  vorgang: string;
 }

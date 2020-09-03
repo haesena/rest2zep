@@ -12,13 +12,17 @@ export class SettingsComponent implements OnInit {
 
   public zepProjects: any[];
 
+  public vorgang: string[];
+
   constructor(public auth: AuthService) {
     this.auth.$dbUser.subscribe(u => {
       this.user = u ?? this.user;
+      if(this.user.zepProjekte) {
+        this.vorgang = u.zepProjekte.filter(p => p.name === u.stdZepProjekt)[0].vorgang;
+      }
     });
   }
 
   ngOnInit(): void {
   }
-
 }

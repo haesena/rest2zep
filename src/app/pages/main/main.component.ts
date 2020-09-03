@@ -4,6 +4,7 @@ import {TimeSlot} from "../../models/time-slot";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {AuthService} from "../../global/auth.service";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-main',
@@ -12,10 +13,14 @@ import {AuthService} from "../../global/auth.service";
 })
 export class MainComponent implements OnInit {
 
+  public user: User = new User();
+
   @ViewChild('paginator') paginator: MatPaginator;
   currentTimeSlot: TimeSlot = new TimeSlot();
 
   pageSize = 5;
+
+  public vorgang: string[];
 
   constructor(public time: TimeSlotService, public auth: AuthService, private _snackBar: MatSnackBar) {
     this.time.$currentTimeSlot.subscribe(t => this.currentTimeSlot = t);
@@ -24,6 +29,12 @@ export class MainComponent implements OnInit {
       this.time.filterParams$.next({pageSize: this.pageSize, length: v, pageIndex: 0});
       if(this.paginator) {
         this.paginator.firstPage();
+      }
+    });
+    this.auth.$dbUser.subscribe(u => {
+      this.user = u ?? this.user;
+      if(this.user.zepProjekte) {
+        this.vorgang = u.zepProjekte.filter(p => p.name === u.stdZepProjekt)[0].vorgang;
       }
     });
   }

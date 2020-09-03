@@ -5,20 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bce17c0-d78a-43a0-93e3-2237a25d29fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/src/zepRequestFunctions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/src/zepSoapRequestModels.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/zepReadProjekte.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/functions/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/functions/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/functions/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/global/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/global/time-slot.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/time-slot.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/time-slot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/time-slot.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/main/main.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/main/main.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/main/main.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/main/main.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/settings/settings.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/settings/settings.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/settings/settings.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/settings/settings.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/partial/time-slot/time-slot.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/partial/time-slot/time-slot.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/partial/time-slot/time-slot.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/partial/time-slot/time-slot.component.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +69,8 @@
       <workItem from="1598251801187" duration="611000" />
       <workItem from="1598300372003" duration="9859000" />
       <workItem from="1598566748462" duration="3859000" />
-      <workItem from="1599082331539" duration="6737000" />
+      <workItem from="1599082331539" duration="6913000" />
+      <workItem from="1599166566771" duration="3891000" />
     </task>
     <task id="LOCAL-00001" summary="Added function to process newly added timeSlots">
       <created>1597959932089</created>
@@ -108,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598310797267</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added ZEP-properties to User in App&#10;Implemented CloudFunction to read the projects from ZEP">
+      <created>1599089233558</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1599089233558</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,20 +128,25 @@
     <MESSAGE value="Restructured timeSlots in DB. Implemented time tracker in app" />
     <MESSAGE value="List of timeSlots displayed on main page" />
     <MESSAGE value="Implemented pagination of the list of timeslots&#10;The count of the number of timeslots is updated with a firestore function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented pagination of the list of timeslots&#10;The count of the number of timeslots is updated with a firestore function" />
+    <MESSAGE value="Added ZEP-properties to User in App&#10;Implemented CloudFunction to read the projects from ZEP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ZEP-properties to User in App&#10;Implemented CloudFunction to read the projects from ZEP" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1342" y="560" key="#com.intellij.ide.util.MemberChooser" timestamp="1598567679025">
+    <state x="1342" y="560" key="#com.intellij.ide.util.MemberChooser" timestamp="1599168263844">
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
-    <state x="1342" y="560" key="#com.intellij.ide.util.MemberChooser/5760.1080.1920.1030/0.0.3072.1688/3840.1080.1920.1040@0.0.3072.1688" timestamp="1598135529250" />
+    <state x="1342" y="560" key="#com.intellij.ide.util.MemberChooser/5760.1080.1920.1030/0.0.3072.1688/3840.1080.1920.1040@0.0.3072.1688" timestamp="1599168263844" />
     <state x="1342" y="560" key="#com.intellij.ide.util.MemberChooser/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598567679025" />
-    <state x="1161" y="413" key="CommitChangelistDialog2" timestamp="1598310796078">
+    <state x="1161" y="413" key="CommitChangelistDialog2" timestamp="1599089232163">
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
     <state x="726" y="177" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1598222378793" />
     <state x="1161" y="413" key="CommitChangelistDialog2/5760.1080.1920.1030/0.0.3072.1688/3840.1080.1920.1040@0.0.3072.1688" timestamp="1598189162944" />
-    <state x="1161" y="413" key="CommitChangelistDialog2/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598310796078" />
+    <state x="1161" y="413" key="CommitChangelistDialog2/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1599089232163" />
+    <state x="93" y="93" width="2886" height="1502" key="DiffContextDialog" timestamp="1599089309467">
+      <screen x="0" y="0" width="3072" height="1688" />
+    </state>
+    <state x="93" y="93" width="2886" height="1502" key="DiffContextDialog/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1599089309467" />
     <state x="1415" y="742" width="720" height="204" key="Github.ShareDialog" timestamp="1597956319275">
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
@@ -153,12 +164,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="807" y="433" key="VCS.ChangelistChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1598220183195" />
-    <state x="1129" y="577" key="Vcs.Push.Dialog.v2" timestamp="1598310799598">
+    <state x="1129" y="577" key="Vcs.Push.Dialog.v2" timestamp="1599089245390">
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
     <state x="706" y="355" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1598222391149" />
     <state x="1129" y="577" key="Vcs.Push.Dialog.v2/5760.1080.1920.1030/0.0.3072.1688/3840.1080.1920.1040@0.0.3072.1688" timestamp="1598189170612" />
-    <state x="1129" y="577" key="Vcs.Push.Dialog.v2/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598310799598" />
+    <state x="1129" y="577" key="Vcs.Push.Dialog.v2/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1599089245390" />
     <state x="1177" y="493" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599086578906">
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
@@ -174,11 +185,11 @@
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
     <state x="1193" y="403" key="run.anything.popup/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598570504208" />
-    <state x="1193" y="498" width="672" height="676" key="search.everywhere.popup" timestamp="1598569251776">
+    <state x="1193" y="498" width="672" height="676" key="search.everywhere.popup" timestamp="1599168257864">
       <screen x="0" y="0" width="3072" height="1688" />
     </state>
     <state x="746" y="307" width="672" height="417" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1598222334503" />
-    <state x="1193" y="498" width="672" height="676" key="search.everywhere.popup/5760.1080.1920.1030/0.0.3072.1688/3840.1080.1920.1040@0.0.3072.1688" timestamp="1598188781432" />
-    <state x="1193" y="498" width="672" height="676" key="search.everywhere.popup/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1598569251776" />
+    <state x="1193" y="498" width="672" height="676" key="search.everywhere.popup/5760.1080.1920.1030/0.0.3072.1688/3840.1080.1920.1040@0.0.3072.1688" timestamp="1599168257864" />
+    <state x="1193" y="498" width="672" height="676" key="search.everywhere.popup/5760.1080.1920.1030/3840.1080.1920.1040/0.0.3072.1688@0.0.3072.1688" timestamp="1599089241989" />
   </component>
 </project>

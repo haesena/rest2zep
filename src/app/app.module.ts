@@ -22,6 +22,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {TimeSlotComponent} from './partial/time-slot/time-slot.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatInputModule,
     MatTooltipModule,
     MatSnackBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

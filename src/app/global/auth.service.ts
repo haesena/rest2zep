@@ -55,7 +55,10 @@ export class AuthService {
             zepAutoExport: false,
             zepEnabled: false,
             zepToken: "",
-            zepUser: ""
+            stdZepProjekt: "",
+            stdZepVorgang: "",
+            zepUser: "",
+            zepProjekte: []
           });
 
           // this.afs.doc('timeSlots/' + this.uid).set({numberOfDocs: 0});

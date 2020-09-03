@@ -70,11 +70,16 @@ export class TimeSlotService {
   }
 
   public startNewSlot() {
+
+    console.log('this.auth.$dbUser.value', this.auth.$dbUser.value);
+
     this.currentTimeSlotObj.set({
       endTime: null,
       exported: false,
       startTime: moment().tz("Europe/Zurich").format('YYYY-MM-DDTHH:mm'),
-      text: this.auth.$dbUser.value.stdText
+      text: this.auth.$dbUser.value.stdText,
+      project: this.auth.$dbUser.value.stdZepProjekt,
+      vorgang: this.auth.$dbUser.value.stdZepVorgang
     });
   }
 
@@ -82,6 +87,11 @@ export class TimeSlotService {
     this.currentTimeSlotObj.update({
       text: event.target.value
     });
+  }
+
+
+  updateCurrentTimeslot(data: Partial<TimeSlot>) {
+    this.currentTimeSlotObj.update(data);
   }
 
   stopTimeSlot(): Observable<TimeSlot> {

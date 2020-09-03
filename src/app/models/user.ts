@@ -11,4 +11,12 @@ export class User {
   zepToken: string;
   zepUser: string;
   zepAutoExport: boolean;
+  stdZepProjekt: string;
+  stdZepVorgang: string;
+  zepProjekte: ZepProjekt[]
+}
+
+export class ZepProjekt {
+  name: string;
+  vorgang: string[];
 }

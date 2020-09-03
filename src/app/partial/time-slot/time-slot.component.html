@@ -5,5 +5,12 @@
   <span matLine>
     {{ timeSlot.text }}
   </span>
+  <span matLine>
+    {{ timeSlot.project }} - {{ timeSlot.vorgang }}
+  </span>
+  <button mat-icon-button [disabled]="timeSlot.exported">
+    <mat-icon *ngIf="timeSlot.exported" class="done">done</mat-icon>
+    <mat-icon *ngIf="!timeSlot.exported">sync</mat-icon>
+  </button>
 </mat-list-item>
 <mat-divider></mat-divider>
